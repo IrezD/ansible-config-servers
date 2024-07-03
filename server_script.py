@@ -47,7 +47,8 @@ def describe_server():
     METADATA = response['Reservations'][0]['Instances'][0]
 
     INSTANCE_STATE = METADATA['State']['Name']
+    PUBLIC_IP = METADATA['PublicIpAddress']
     
-    print(f"The server is currently ")
+    print(f"Instance is {INSTANCE_STATE}. \nPublic IP: {PUBLIC_IP} ")
 
-create_server()
+describe_server()
