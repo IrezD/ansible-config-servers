@@ -8,9 +8,8 @@ ec2 = boto3.client("ec2")
 SECURITY_GROUP_ID = os.getenv("SECURITY_GROUP_ID")
 INSTANCE_TYPE = os.getenv("INSTANCE_TYPE")
 KEYNAME = os.getenv("KEYNAME")
-INSTANCE_ID = os.getenv("INSTANCE_ID")
 
-COUNT = 1
+COUNT = 2
 
 # ** Create Ansible Server (Ubuntu)
 
@@ -48,30 +47,37 @@ def describe_server():
     METADATA = response['Reservations'][0]['Instances'][0]
 
     INSTANCE_STATE = METADATA['State']['Name']
-    PUBLIC_IP = METADATA['PublicIpAddress']    
-    
+    PUBLIC_IP = METADATA['PublicIpAddress'] 
+       
+    print(f"{response} \n ****************************************************")
     print(f"Instance is {INSTANCE_STATE}. \nPublic IP: {PUBLIC_IP} ")
 
 
 # ** Start Server
 
 def start_server():
+    print("Which Instance do you wish Start? \n")
     ec2.start_instances(
-        InstanceIds = [INSTANCE_ID]
+        InstanceIds = input("Enter the instance-id: ").split()
     )
+    
 
-    print(f"Server - {INSTANCE_ID} is now Running.")
+    print(f"Server is Running.")
+
+    # print(f"Server - {INSTANCE_ID} is now Running.")
 
 # ** Stop Server
 
 def stop_server():
+    print("Which Instance do you wish Stop? \n")
     ec2.stop_instances(
-        InstanceIds = [INSTANCE_ID]
+        InstanceIds = input("Enter the instance-id: ").split()
+
     )
 
-    print(f"Server - {INSTANCE_ID} has been Stopped.")
+    print(f"Server has been Stopped.")
 
 
 # ** Call Any Function to Run
 
-start_server()
+describe_server()

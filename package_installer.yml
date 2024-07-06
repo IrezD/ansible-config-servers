@@ -1,0 +1,15 @@
+---
+
+- name: Install Package on remote servers
+  hosts: all
+  become: true
+  tasks: 
+  
+
+  - name: Update package repository
+    apt:
+      update_cache: yes
+    
+  - name: Install nginx on Ubuntu servers
+    apt:
+      name: nginx
