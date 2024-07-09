@@ -1,4 +1,4 @@
-# Ansible Config Servers
+# Server Configuration with Ansible
 
 This project provides a simple and efficient way to manage Ubuntu servers using Ansible. It includes Ansible playbooks to install and configure packages such as Nginx.
 
