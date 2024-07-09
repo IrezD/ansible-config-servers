@@ -4,6 +4,6 @@ This project provides a simple and efficient way to manage Ubuntu servers using 
 
 ## Features
 
-Easy configuration of Ubuntu servers
-Automated installation of Nginx and other packages
-Customizable playbooks for specific server needs
+Easy configuration of Ubuntu servers <br>
+Automated installation of Nginx and other packages <br>
+Customizable playbooks for specific server needs <br>
