@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+
+  - name: update repository and cache
+    apt:
+     update_cache: yes
+
+  - name: install 'ncdu' package on all server for disk analysis
+    apt:
+      name: ncdu
+      state: present
