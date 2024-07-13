@@ -12,3 +12,15 @@
     apt:
       name: ncdu
       state: present
+
+- hosts: webserver
+  become: true
+  name: Role for webservers
+  roles:
+    - role: webserver
+
+- hosts: all
+  name: Create swap space on all servers
+  become: true
+  roles:
+    - role: swapfile

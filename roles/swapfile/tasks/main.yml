@@ -1,0 +1,21 @@
+- name: Check if swap file already exits
+  stat:
+    path: /swapfile
+  register: swap_file_check
+
+- name: Create swap file
+  command: fallocate -l 1GB /swapfile
+  when: not swap_file_check.stat.exists
+
+- name: Set appropriate permissions for swap file
+  file: 
+    path: /swapfile
+    mode: '0600'
+
+- name: Format swap file
+  command: mkswap /swapfile
+  when: not swap_file_check.stat.exists
+
+- name: Enable swapfile
+  command: swapon /swapfile
+  when: not swap_file_check.stat.exists
